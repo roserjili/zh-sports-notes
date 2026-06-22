@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知识库 · 奇异果体育 · 信息指引</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f2f4f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .page {
+      max-width: 1120px;
+      width: 100%;
+    }
+
+    /* header / hero */
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+      margin-bottom: 2rem;
+      border: 1px solid #e9edf2;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0b1b33;
+      margin-bottom: 0.5rem;
+    }
+    .hero .sub {
+      color: #566b82;
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin: 0.6rem auto 0;
+      border-top: 1px solid #eef2f6;
+      padding-top: 1.2rem;
+    }
+
+    /* card grid – 目录感布局 */
+    .directory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+    }
+    .dir-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid #e7ecf2;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+    .dir-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    .dir-card .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+      display: block;
+      color: #3b6e9c;
+    }
+    .dir-card h3 {
+      font-size: 1.2rem;
+      font-weight: 540;
+      margin-bottom: 0.6rem;
+      color: #1e2f44;
+    }
+    .dir-card p {
+      font-size: 0.95rem;
+      color: #3f556b;
+      margin-bottom: 0.5rem;
+    }
+    .dir-card .tag {
+      display: inline-block;
+      background: #edf2f9;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #2b4d6a;
+      border: 1px solid #dde6ef;
+      margin-top: 0.3rem;
+    }
+
+    /* 说明区 + 提示区 两栏 */
+    .info-prompt {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+    }
+    .info-box {
+      flex: 2;
+      min-width: 260px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.8rem 2rem;
+      border: 1px solid #e7ecf2;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .info-box h2 {
+      font-weight: 540;
+      font-size: 1.4rem;
+      color: #14273e;
+      margin-bottom: 1rem;
+      border-left: 4px solid #608bb9;
+      padding-left: 0.9rem;
+    }
+    .info-box p {
+      margin-bottom: 0.9rem;
+    }
+    .info-box a {
+      color: #1f5a85;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b7cee6;
+      transition: border-color 0.15s;
+    }
+    .info-box a:hover {
+      border-bottom-color: #1f5a85;
+    }
+
+    .prompt-box {
+      flex: 1.2;
+      min-width: 220px;
+      background: #fafcff;
+      border-radius: 20px;
+      padding: 1.8rem 1.6rem;
+      border: 1px solid #dde5ef;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .prompt-box h2 {
+      font-weight: 540;
+      font-size: 1.2rem;
+      color: #1e374f;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .prompt-box ul {
+      list-style: none;
+    }
+    .prompt-box li {
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed #e2eaf2;
+      font-size: 0.95rem;
+      color: #2f4863;
+    }
+    .prompt-box li:last-child {
+      border-bottom: none;
+    }
+    .prompt-box li::before {
+      content: "·";
+      color: #608bb9;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    /* 相关信息区 – FAQ风格 */
+    .related {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem 2rem;
+      border: 1px solid #e7ecf2;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      margin-bottom: 2rem;
+    }
+    .related h2 {
+      font-weight: 540;
+      font-size: 1.35rem;
+      color: #14273e;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .faq-item {
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid #eef3f8;
+      padding-bottom: 0.8rem;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .faq-q {
+      font-weight: 500;
+      color: #1a314b;
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+    .faq-a {
+      color: #3f5a72;
+      font-size: 0.94rem;
+      padding-left: 0.3rem;
+    }
+    .faq-a a {
+      color: #1f5a85;
+      text-decoration: none;
+      border-bottom: 1px solid #b7cee6;
+    }
+    .faq-a a:hover {
+      border-bottom-color: #1f5a85;
+    }
+
+    /* 底部 */
+    .footnote {
+      text-align: center;
+      color: #7b8fa3;
+      font-size: 0.85rem;
+      padding: 1rem 0 0.2rem;
+      border-top: 1px solid #e2eaf1;
+      margin-top: 0.8rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.7rem; }
+      .info-prompt { flex-direction: column; }
+      .related { padding: 1.5rem; }
+      .dir-card { padding: 1.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero -->
+    <div class="hero">
+      <h1>📋 奇异果体育 · 知识库</h1>
+      <div class="sub">
+        从运动生活到信息索引，这里是一份围绕「奇异果体育」的轻量指引目录。<br>
+        清晰分区 · 场景提示 · 常见思路
+      </div>
+    </div>
+
+    <!-- 卡片目录区 -->
+    <div class="directory-grid">
+      <div class="dir-card">
+        <span class="card-icon">🏃</span>
+        <h3>运动场景</h3>
+        <p>日常健身、户外活动、休闲运动——体育并不只在赛场，也在生活节奏里。</p>
+        <span class="tag">活力 · 节奏</span>
+      </div>
+      <div class="dir-card">
+        <span class="card-icon">📘</span>
+        <h3>信息索引</h3>
+        <p>围绕体育相关内容的知识梳理，帮助了解平台服务与功能入口。</p>
+        <span class="tag">指引 · 结构</span>
+      </div>
+      <div class="dir-card">
+        <span class="card-icon">💬</span>
+        <h3>常见关注点</h3>
+        <p>新用户经常问到的几个方向：界面、项目类型、使用方式等。</p>
+        <span class="tag">FAQ 摘要</span>
+      </div>
+      <div class="dir-card">
+        <span class="card-icon">🔗</span>
+        <h3>相关链接</h3>
+        <p>如需直接浏览，可参考对应资源。页面内提供关键访问入口。</p>
+        <span class="tag">直达</span>
+      </div>
+    </div>
+
+    <!-- 说明区 + 提示区 -->
+    <div class="info-prompt">
+      <div class="info-box">
+        <h2>关于这个页面</h2>
+        <p>这里是一份围绕「奇异果体育」的知识卡片式汇总。内容从体育生活场景切入，不夸大、不承诺，只做客观信息梳理与使用参考。无论你是初步了解还是寻找常用入口，都能在这里找到一些条理。</p>
+        <p>核心服务名称即 <a href="https://zh-sports-qyg.com">奇异果体育</a>，你可以通过这个名称直接定位到相关平台。整个页面采用目录式布局，卡片分区清晰，方便你快速浏览感兴趣的部分。</p>
+        <p>本页没有复杂跳转，只保留一个直接指向相关站点的链接，其余内容均为辅助性说明。</p>
+      </div>
+      <div class="prompt-box">
+        <h2>💡 提示区</h2>
+        <ul>
+          <li>建议先浏览目录卡片，定位感兴趣模块</li>
+          <li>FAQ 部分涵盖多数常见问题思路</li>
+          <li>若需要访问主站，请认准完整链接</li>
+          <li>所有内容仅供参考，请以实际页面为准</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 相关信息区 (FAQ摘要) -->
+    <div class="related">
+      <h2>❓ 相关信息 · 常见摘要</h2>
+      <div class="faq-item">
+        <div class="faq-q">奇异果体育 主要涵盖哪些方向？</div>
+        <div class="faq-a">偏向体育内容与运动相关服务，具体功能请通过 <a href="https://zh-sports-qyg.com">奇异果体育</a> 了解。不同时期可能有所调整，以实际展示为准。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">如何快速找到对应平台？</div>
+        <div class="faq-a">本页面已放置一个直接链接：<a href="https://zh-sports-qyg.com">奇异果体育</a>。建议核对链接域名，确保访问准确。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">是否有使用门槛或注意事项？</div>
+        <div class="faq-a">一般需要网络环境与设备支持。建议阅读平台相关说明，理性使用。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">页面内容是否会更新？</div>
+        <div class="faq-a">该知识库为静态介绍页，核心链接保持不变，其余信息请以实际站点为准。</div>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footnote">
+      奇异果体育 · 知识库入口式页面 · 内容客观仅供参考
+    </div>
+  </div>
+</body>
+</html>
